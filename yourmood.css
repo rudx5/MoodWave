@@ -1,0 +1,127 @@
+body {
+  font-family: "League Spartan", sans-serif;
+  background-color: #fcf5e6;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #72a372;
+  padding: 15px 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #dfffe0;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  color: #026668;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #026668;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #1f7ea3;
+}
+
+.content {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  color: #026668;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+a {
+  color: #1f7ea3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.label {
+  text-align: right;
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 60px;
+}
+
+#tipBox {
+  margin-top: 20px;
+  font-size: 16px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #007acc;
+  color: #333;
+  display: block;
+  min-height: 50px;
+  border-radius: 5px;
+}
+
+#charImage {
+  max-width: 200px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.circle {
+  margin: 10px;
+}
+
+.example{
+  text-align: center;
+}

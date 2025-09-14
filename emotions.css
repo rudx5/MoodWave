@@ -1,0 +1,90 @@
+body {
+  font-family: "League Spartan", sans-serif;
+  background-color: #fcf5e6;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #72a372;
+  padding: 15px 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #dfffe0;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  color: #026668;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #026668;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #1f7ea3;
+}
+
+.container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.emotions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.emotion {
+  background-color: #afe9fa;
+  color: #026668;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  min-width: 120px;
+}
+
+.emotion:hover {
+  background-color: #72a372;
+  color: white;
+  transform: scale(1.05);
+}

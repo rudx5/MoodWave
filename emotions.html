@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Your Emotion</title>
+    <link rel="stylesheet" href="emotions.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rate.html">Rate Your Mood</a>
+      <a href="helplines.html">Helplines</a>
+      <a href="team.html">Meet The Team</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+      <h1>Which emotion best describes your mood?</h1>
+      <div class="emotions-grid">
+        <!-- Each button represents one of the 12 emotions -->
+        <button class="emotion" data-emotion="stressed">Stressed</button>
+        <button class="emotion" data-emotion="guilty">Guilty</button>
+        <button class="emotion" data-emotion="shameful">Shameful</button>
+        <button class="emotion" data-emotion="scared">Scared</button>
+        <button class="emotion" data-emotion="anxious">Anxious</button>
+        <button class="emotion" data-emotion="lonely">Lonely</button>
+        <button class="emotion" data-emotion="hopeless">Hopeless</button>
+        <button class="emotion" data-emotion="angry">Angry</button>
+        <button class="emotion" data-emotion="grief">Grief</button>
+        <button class="emotion" data-emotion="burnout">Burnout</button>
+        <button class="emotion" data-emotion="jealous">Jealous</button>
+        <button class="emotion" data-emotion="tired">Tired</button>
+      </div>
+    </main>
+
+    <script>
+      const buttons = document.querySelectorAll(".emotion");
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const mood = btn.getAttribute("data-emotion");
+          localStorage.setItem("selectedEmotion", mood);
+          window.location.href = "yourmood.html";
+        });
+      });
+    </script>
+  </body>
+</html>

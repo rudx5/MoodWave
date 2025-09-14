@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Mood</title>
+    <link rel="stylesheet" href="yourmood.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rate.html">Rate Your Mood</a>
+      <a href="helplines.html">Helplines</a>
+      <a href="team.html">Meet The Team</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+      <h1 id="mood-title">Your Mood</h1>
+
+      <section class="section">
+        <h2>Suggestions & Tips</h2>
+        <ul id="tips-list">
+          <!-- Dynamically filled -->
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Resources</h2>
+        <ul id="resources-list">
+          <!-- Dynamically filled -->
+        </ul>
+      </section>
+
+      <div class="label">Little Wave</div>
+    </main>
+
+    <script>
+      const mood = localStorage.getItem("selectedEmotion") || "unknown";
+      const moodTitle = document.getElementById("mood-title");
+      const tipsList = document.getElementById("tips-list");
+      const resourcesList = document.getElementById("resources-list");
+
+      const capitalizedMood = mood.charAt(0).toUpperCase() + mood.slice(1);
+      moodTitle.textContent = capitalizedMood;
+
+      // Dummy suggestions (replace with real ones later)
+      const tips = {
+        stressed: [
+          "1. Try a brain dump — Grab a notebook or a blank sheet of paper and write down everything that is swirling in your mind — no grammar, no filters, no order. Let it spill out freely, just as it is. Do not worry about making sense or being neat. The goal is not clarity, it is release. Once you have emptied your thoughts,take a moment to stretch gently. Roll your neck, drop your shoulders, unclench your jaw. Move slowly, without trying to be productive. Let your body remember what safety feels like. This is not a task. It is a soft return to yourself.",
+          "2. Do a body scan — lie down or sit comfortably and slowly bring awareness to each part of your body from head to toe. Notice where you are holding tension and gently release it.",
+          "3. Take a 'do-nothing' walk — no goals, no phone, no counting steps. Just walk without a destination. Let your pace slow naturally.",
+        ],
+        guilty: [
+          "1. Write a letter of forgiveness to yourself. Acknowledge what happened, what you regret, and what you have learned. Speak to yourself with the same grace you would offer a friend.",
+          "2. Separate the mistake from your identity. You are not the bad choice you made. You are the person who is aware of it and willing to do better.",
+          "3. Talk it through with someone you trust. Say it aloud. Let someone else’s voice offer balance where your inner voice is too harsh.",
+        ],
+        shameful: [
+          "1. Recognize signs of shame - Understand your own triggers for shame.",
+          "2. Have critical awareness of shame - Make sure you know shame’s cultural and interpersonal function.",
+          "3. Reach out to others - Share your story of feeling shameful to people who have felt similar to you.",
+        ],
+        scared: [
+          "1. Make a safety list — three people, three places, three things that make you feel secure. Look at it. Keep it close.",
+          "2. Name what you are afraid of, then write: And if that happens, then what? Keep answering until the fear becomes less powerful.",
+          "3. Breathe in deeply, and imagine exhaling fear physically out of your body. Pair it with slow arm movements to move energy.",
+        ],
+        anxious: [
+          "1. Use the 5-4-3-2-1 grounding technique. Find 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste. It brings your brain back to the present.",
+          "2. Put both hands under cold water for 30 seconds. It lowers cortisol and interrupts anxious spirals.",
+          "3. Create a worry time. Allow yourself 10 minutes in the day to feel and list out everything you are anxious about. Outside that time, gently tell yourself, not now.",
+        ],
+        lonely: [
+          "1. Write a letter to someone you miss — even if you do not send it. Describe a memory, ask how they are doing, or just say what you wish they knew.",
+          "2. Step outside and notice three signs of life — a bird, a breeze, a neighbor, a tree. You are part of a bigger world, even when no one is near.",
+          "3. Do one small task that reminds you of connection. This could be making tea the way your grandmother did or listening to a song you once shared with someone.",
+        ],
+        hopeless: [
+          "1. Name one area of life you still have some control over, however small. It might be your next meal, the clothes you wear today, or the next thing you say.",
+          "2. Make a “things that changed” list. Write five times in the past when things felt stuck but eventually shifted. This helps your brain remember: change is real.",
+          "3. Borrow hope from someone else. Listen to a story, interview, or video of someone who got through something similar. Let their survival be your proof.",
+        ],
+        angry: [
+          "1. Write what you are angry about without censoring yourself. Then underline what is underneath the anger — is it fear, hurt, injustice, feeling ignored? Most anger is layered.",
+          "2. Move your body — not to punish it, but to release heat. Try punching a pillow, doing jumping jacks, or even shouting into a towel.",
+          "3. Sit with cold water or ice for a moment. It interrupts the bodys fight response and helps re-engage rational thought.",
+        ],
+        grief: [
+          "1. Let the grief speak. Cry. Sit in silence. Say the name out loud. Do not rush to fix it. Grief is not a flaw — it is proof that you loved.",
+          "2. Hold an object that connects you to what you lost. Let it anchor the memory. Touch, smell, weight — grief is physical, not just emotional.",
+          "3. Create a ritual. Light a candle, say a phrase, play a song. Doing this regularly can bring comfort without forcing you to move on too soon.",
+        ],
+        burnout: [
+          "1. Cancel something that does not truly need to be done today. Let yourself feel what it is like to release unnecessary pressure.",
+          "2. Set a 10-minute timer and do nothing. Not a scroll break. Actual nothing. Let your brain be bored — it's when healing begins.",
+          "3. Make a list titled things I have survived — then reread it. Burnout often hides how capable you have been. Remind yourself.",
+        ],
+        jealousy: [
+          "1. Ask yourself: What is this jealousy pointing toward that I desire? Often, envy is a map to what matters most to us. It is not the other person — it is the longing underneath.",
+          "2. Turn comparison into curiosity. Instead of “Why them, not me?” ask, “What can I learn from their path that I have not tried yet?”",
+          "3. List three things in your life right now that someone else might wish they had. This is not to guilt yourself, but to shift the lens — your life holds worth, too.",
+        ],
+        tired: [
+          "1. Ask yourself: Am I physically tired, emotionally tired, or mentally overstimulated? Name the type of fatigue — it helps you respond with the right kind of rest.",
+          "2. Do a “low-power mode” day. No multi-tasking, minimal talking, simple meals, soft lighting. Move through your day like you are whispering to yourself.",
+          "3. Try non-sleep deep rest (NSDR). This includes guided body scans, Yoga Nidra, or simply lying down with your eyes closed and breathing deeply — no need to fall asleep.",
+        ],
+      };
+
+      // Render lists
+      (tips[mood] || ["You're not alone."]).forEach((tip) => {
+        const li = document.createElement("li");
+        li.textContent = tip;
+        tipsList.appendChild(li);
+      });
+
+      (resources[mood] || [["More Help", "https://mentalhealth.org"]]).forEach(
+        ([name, url]) => {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = url;
+          link.textContent = name;
+          link.target = "_blank";
+          li.appendChild(link);
+          resourcesList.appendChild(li);
+        }
+      );
+    </script>
+  </body>
+</html>
